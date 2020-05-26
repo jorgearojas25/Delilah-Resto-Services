@@ -1,0 +1,442 @@
+openapi: 3.0.0
+# Added by API Auto Mocking Plugin
+servers:
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/JorgeRojasDevelops/Delilah/1.0.0
+info:
+  description: Delilah restaurant API
+  version: "1.0.0"
+  title: Delilah restaurant API
+  contact:
+    email: jorgearojas25@gmail.com
+  license:
+    name: Apache 2.0
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+tags:
+  - name: admins
+    description: Secured Admin-only calls
+  - name: customers
+    description: Operations available to regular customers
+paths:
+  /FormasDePago:
+    get:
+      tags:
+        - admins
+        - customers
+      summary: Busca las formas de pago
+      description: |
+        Buscar todas las formas de pago en el sistema
+      responses:
+        "200":
+          description: Ok
+  /Pedido:
+    get:
+      tags:
+        - admins
+        - customers
+      summary: Busca los pedidos
+      description: |
+        Buscar todas los pedidos en el sistema
+      responses:
+        "200":
+          description: Ok
+    post:
+      tags:
+        - admins
+        - customers
+      summary: Ingresa los pedidos
+      description: |
+        Ingresa un pedido nueva en el sistema
+      responses:
+        "201":
+          description: Creado con exito
+        "400":
+          description: "Error en alguno de los datos"
+        "409":
+          description: Ya existe un elemento con el mismo nombre
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/pedido"
+        description: pedido para agregar al sistema
+    put:
+      tags:
+        - admins
+        - customers
+      summary: Actualiza los datos de un pedido
+      description: Buscar el pedido por id verifica su existencia y actualiza los datos
+      responses:
+        "200":
+          description: Ok
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/pedido"
+        description: pedido para agregar al sistema
+  /Pedido/{id_pedido}:
+    get:
+      tags:
+        - admins
+        - customers
+      summary: Busca una de los pedidos por id
+      description: |
+        Busca una de los pedidos por id
+      parameters:
+        - name: id_pedido
+          in: path
+          required: true
+          description: id de el pedido
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
+      responses:
+        "200":
+          description: Ok
+    delete:
+      tags:
+        - admins
+        - customers
+      summary: Eliminar un pedido
+      description: | 
+        Elimina un pedido
+      parameters:
+        - name: id_pedido
+          in: path
+          required: true
+          description: id de el pedido
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
+      responses:
+        "200": 
+          description: Ok
+  /PedidosUsuario/{id_usuario}:
+    get:
+      tags:
+        - admins
+        - customers
+      summary: Lista de pedidos por usuario
+      description: |
+        Busca los realizados por un usuario
+      parameters:
+        - name: id_usuario
+          in: path
+          required: true
+          description: id de el usuario
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
+      responses:
+        "200":
+          description: Ok
+  /Usuario:
+    post:
+      tags:
+        - admins
+        - customers
+      summary: Ingresa los usuarios
+      description: |
+        Ingresa un usuario nueva en el sistema
+      responses:
+        "201":
+          description: Creado con exito
+        "400":
+          description: "Error en alguno de los datos"
+        "409":
+          description: Ya existe un usuario con el mismo login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/usuario"
+        description: usuario para agregar al sistema
+  /Login:
+    post:
+      tags:
+        - admins
+        - customers 
+      summary: Concede el acceso a los servicio del API segun el rol
+      description: |
+        Valida los datos del usuario y devuelve un token que autoriza
+        el uso de los servicios segun el id_rol del usuario
+      responses:
+        "200":
+          description: Ok
+      requestBody:
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/login'
+        description: data necesaria para el autenticar a una persona
+  /Item:
+    get:
+      tags:
+        - admins
+        - customers
+      summary: Busca una lista de todos los items
+      description: |
+        Buscar todas los items en el sistema
+      responses:
+        "200":
+          description: Ok
+    post:
+      tags:
+        - admins
+      summary: Ingresa los items
+      description: |
+        Ingresa un item nueva en el sistema
+      responses:
+        "201":
+          description: Creado con exito
+        "400":
+          description: "Error en alguno de los datos"
+        "409":
+          description: Ya existe un elemento con el mismo nombre
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/item"
+        description: item para agregar al sistema
+    put:
+      tags:
+        - admins
+      summary: Actualiza los datos de un item
+      description: Buscar el item por id verifica su existencia y actualiza los datos
+      responses:
+        "200":
+          description: Ok
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/item"
+        description: item para agregar al sistema
+  /Item/{id_item}:
+    get:
+      tags:
+        - admins
+        - customers
+      summary: Busca una de los items por id
+      description: |
+        Busca una de los items por id
+      parameters:
+        - name: id_item
+          in: path
+          required: true
+          description: id de el item
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
+      responses:
+        "200":
+          description: Ok
+    delete:
+      tags:
+        - admins
+      summary: Eliminar un item
+      description: | 
+        Elimina un item
+      parameters:
+        - name: id_item
+          in: path
+          required: true
+          description: id de el item
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
+      responses:
+        "200": 
+          description: Ok
+  /Rol:
+    get:
+      tags:
+        - admins
+        - customers
+      summary: Busca lista de roles
+      description: |
+        Buscar todas los roles en el sistema
+      responses:
+        "200":
+          description: Ok
+components:
+  schemas:
+    login:
+      required:
+        - login
+        - password
+      properties:
+        login:
+          type: string
+          example: "delilah_user"
+        password:
+          type: string
+          example: "secretPassword"
+    pedido:
+      required:
+        - id_usuario
+        - id_estado_Pago
+        - id_forma_pago
+      properties:
+        id_pedido:
+          type: integer
+          example: 1
+        valor_total:
+          type: number
+          example: 12,000
+        fecha_pedido:
+          type: string
+          format: datetime
+          example: "2020-04-13T10:12:24.023Z"
+        id_usuario:
+          $ref: "#/components/schemas/usuario"
+        id_estado_Pago:
+          $ref: "#/components/schemas/estado_pedido"
+        id_forma_pago:
+          $ref: "#/components/schemas/forma_pago"
+    usuario:
+      required:
+        - login
+        - nombres
+        - correo
+        - telefono
+        - direccion
+        - id_rol
+      properties:
+        id_usuario:
+          type: integer
+          example: 1
+        login:
+          type: string
+          example: "delilah_user"
+        nombre:
+          type: string
+          example: "delilah"
+        apellido:
+          type: string
+          example: "user"
+        correo:
+          type: string
+          example: "delilah_user@mail.com"
+        telefono:
+          type: string
+          example: "3333333333"
+        direccion:
+          type: string
+          example: "Cll 12 #34-56"
+        password:
+          type: string
+          example: "secretPassword"
+        fechaRegistro:
+          type: string
+          format: datetime
+          example: "2020-04-13T10:12:24.023Z"
+        id_rol:
+          $ref: "#/components/schemas/rol"
+    estado_pedido:
+      required:
+        - descripcion
+      properties:
+        id_estado_pedido:
+          type: integer
+          example: 1
+        descripcion:
+          type: string
+          example: "Pagado"
+        color:
+          type: string
+          example: "#FFFFFF"
+    forma_pago:
+      required:
+        - descripcion
+      properties:
+        id_forma_pago:
+          type: integer
+          example: 1
+        descripcion:
+          type: string
+          example: "Efectivo"
+    item:
+      required:
+        - nombre
+        - valor
+      properties:
+        id_items:
+          type: integer
+          example: 1
+        nombre:
+          type: string
+          example: "Chocomilk"
+        descripcion:
+          type: string
+          example: "Delicionsa bebida chocolate"
+        valor:
+          type: number
+          example: 1000,00
+        imagen:
+          type: string
+          example: "statics/images/chocomilk"
+    factura:
+      required:
+        - id_pedido
+        - id_item
+        - cantidad
+        - valor_total
+      properties:
+        id_factura:
+          type: integer
+          example: 1
+        cantidad:
+          type: integer
+          example: 5
+        valor_total:
+          type: number
+          example: 1000,00
+        id_perdido:
+          $ref: "#/components/schemas/pedido"
+        IdItem:
+          $ref: "#/components/schemas/item"
+    permiso:
+      required:
+        - descripcion
+        - recurso
+      properties:
+        id_permiso:
+          type: integer
+          example: 1
+        descripcion:
+          type: string
+          example: "Administracion items"
+        recurso:
+          type: string
+          example: "statics/admin/items"
+        id_rol:
+          $ref: "#/components/schemas/rol"
+    rol:
+      required:
+        - descripcion
+      properties:
+        id_rol:
+          type: integer
+          example: 1
+        descripcion:
+          type: string
+          example: "Administrador"
+        id_permiso:
+          $ref: "#/components/schemas/permiso"
+    usuario_item:
+      properties:
+        id_usuario_item:
+          type: integer
+          example: 1
+        IdUsuarios:
+          $ref: "#/components/schemas/usuario"
+        IdItems:
+          $ref: "#/components/schemas/item"
