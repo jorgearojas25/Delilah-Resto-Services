@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const controller = require("../2.business/item_controller");
 const response = require("../../network/response");
+const auth = require('../../lib/auth');
 
 router.get("/", (req, res) => {
   controller
@@ -10,22 +11,27 @@ router.get("/", (req, res) => {
       response.success(req, res, data, 200);
     })
     .catch((error) => {
-      response.error(req, res, "Error interno", 500, `[item_network] ${error}`);
+      response.error(
+        req, 
+        res, 
+        "Error interno", 
+        500, 
+        `[item_network] ${error}`);
     });
 });
 
-router.post("/", (req, res) => {
+router.post("/",auth.authorize, (req, res) => {
   controller
     .PostItem(req, res)
     .then((data) => {
-      response.success(req, res, data, 200);
+      response.success(req, res, data, 201);
     })
     .catch((error) => {
       response.error(req, res, "Error interno", 500, `[item_network] ${error}`);
     });
 });
 
-router.put("/", (req, res) => {
+router.put("/",auth.authorize, (req, res) => {
   controller
     .UpdateItem(req, res)
     .then((data) => {
@@ -36,8 +42,8 @@ router.put("/", (req, res) => {
     });
 });
 
-router.delete('/:id', async (req, res) => {
-    controller
+router.delete("/:id",auth.authorize, async (req, res) => {
+  controller
     .DeleteItem(req, res)
     .then((data) => {
       response.success(req, res, data, 200);
@@ -45,6 +51,6 @@ router.delete('/:id', async (req, res) => {
     .catch((error) => {
       response.error(req, res, "Error interno", 500, `[item_network] ${error}`);
     });
-})
+});
 
 module.exports = router;

@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 const controller = require("../2.business/usuario_controller");
 const response = require("../../network/response");
+const auth = require("../../lib/auth");
 
-router.get("/", (req, res) => {
+router.get("/",auth.authorize, (req, res) => {
   controller
     .GetListaUsuarios()
     .then((data) => {
@@ -20,7 +21,7 @@ router.get("/", (req, res) => {
     });
 });
 
-router.post("/", (req, res) => {
+router.post("/signup", (req, res) => {
   controller
     .PostUsuario(req, res)
     .then((data) => {

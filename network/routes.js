@@ -4,6 +4,7 @@ const usuario = require("../services/1.network/usuario_network");
 const item = require("../services/1.network/items_network");
 const pedido = require("../services/1.network/pedido_network");
 const login = require("../services/1.network/login_network");
+const estado_pedido = require("../services/1.network/estado_pedido_network");
 
 const routes = (server) => {
   server.use("/rol", rol);
@@ -12,6 +13,7 @@ const routes = (server) => {
   server.use("/item", item);
   server.use("/pedido", pedido);
   server.use("/login", login);
+  server.use("/estadoPedido", estado_pedido);
 };
 
 module.exports = routes;

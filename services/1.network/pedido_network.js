@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const controller = require("../2.business/pedido_controller");
 const response = require("../../network/response");
+const auth = require("../../lib/auth");
 
 router.get("/", (req, res) => {
   controller
@@ -25,7 +26,7 @@ router.post("/", (req, res) => {
     });
 });
 
-router.put("/", (req, res) => {
+router.put("/",auth.authorize, (req, res) => {
   controller
     .UpdatePedido(req, res)
     .then((data) => {
