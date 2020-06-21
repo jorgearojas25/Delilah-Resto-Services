@@ -1,0 +1,477 @@
+{
+	"info": {
+		"_postman_id": "062e9765-6a94-45e1-87e3-1fac55312532",
+		"name": "Delilah",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "REQ1_Registro_usuario_no_auth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"login\": \"creacion\", \n\t\"nombre\": \"test\", \n\t\"apellido\": \"prueba\", \n\t\"correo\": \"prueba@correo.com\", \n\t\"telefono\": \"1234567890\", \n\t\"direccion\": \"Av 34 #2-4\", \n\t\"password\": \"123\", \n\t\"fecha_registro\": \"2020-05-06\", \n\t\"id_rol\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URI}}/usuario/signup",
+					"host": [
+						"{{BASE_URI}}"
+					],
+					"path": [
+						"usuario",
+						"signup"
+					]
+				},
+				"description": "Servicio para el registro de usuario en el sistema y asignacion de roles"
+			},
+			"response": []
+		},
+		{
+			"name": "REQ2_lista_productos_CUSTOMERTOKEN",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{CUSTOMER_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URI}}/item",
+					"host": [
+						"{{BASE_URI}}"
+					],
+					"path": [
+						"item"
+					]
+				},
+				"description": "Servicio para listar los productos del sistema, se necesita autenticacion de un admin o un customer"
+			},
+			"response": []
+		},
+		{
+			"name": "REQ3_Crear_pedido_CUSTOMERTOKEN",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{CUSTOMER_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id_usuario\": 2,\n    \"id_formas_pago\": 1,\n    \"items\": [\n        {\n            \"id_item\": 1,\n            \"cantidad\": 2\n        },\n        {\n            \"id_item\": 2,\n            \"cantidad\": 1\t\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URI}}/pedido",
+					"host": [
+						"{{BASE_URI}}"
+					],
+					"path": [
+						"pedido"
+					]
+				},
+				"description": "Creacion de pedidos, usa el id del usuario, la forma de pago y un listado de items del sistema, se necesita autenticacion como customer o admin"
+			},
+			"response": [
+				{
+					"name": "REQ3_Crear_pedido_CUSTOMERTOKEN",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_usuario\": 2,\n    \"id_formas_pago\": 1,\n    \"items\": [\n        {\n            \"id_item\": 1,\n            \"cantidad\": 2\n        },\n        {\n            \"id_item\": 2,\n            \"cantidad\": 1\t\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URI}}/pedido",
+							"host": [
+								"{{BASE_URI}}"
+							],
+							"path": [
+								"pedido"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "48"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"30-V+CaWX1INXmjx1LlYhpk4fGAZmQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 21 Jun 2020 06:59:37 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"resultado\": true,\n    \"entidades\": [\n        1\n    ],\n    \"mensajes\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "REQ4_Upadte_pedido_ADMINTOKEN",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ADMIN_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id_pedido\": 1,\n    \"valor_total\": \"20000.00\",\n    \"fecha_pedido\": \"2020-05-26T20:31:58.000Z\",\n    \"id_usuario\": 2,\n    \"id_estado_pedido\": 2,\n    \"id_formas_pago\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URI}}/pedido",
+					"host": [
+						"{{BASE_URI}}"
+					],
+					"path": [
+						"pedido"
+					]
+				},
+				"description": "Servicio para editar el pedido, se requiere autenticacion como admin del sistema"
+			},
+			"response": []
+		},
+		{
+			"name": "REQ5_1_Creacion_item_ADMINTOKEN",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ADMIN_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Creacion\",\n    \"descripcion\": \"Prueba Creacion\",\n    \"valor\": 20000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URI}}/item",
+					"host": [
+						"{{BASE_URI}}"
+					],
+					"path": [
+						"item"
+					]
+				},
+				"description": "Servicio para la creacion de items, se requiere autenticacion como admin del sistema\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "REQ5_2_Update_item_ADMINTOKEN",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ADMIN_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id_item\": 9,\r\n    \"imagen\": null,\r\n    \"nombre\": \"Edicion\",\r\n    \"descripcion\": \"Prueba Edicion\",\r\n    \"valor\": 20000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URI}}/item",
+					"host": [
+						"{{BASE_URI}}"
+					],
+					"path": [
+						"item"
+					]
+				},
+				"description": "Edicion de un pedido solo por parte de los administradores del sistema"
+			},
+			"response": []
+		},
+		{
+			"name": "REQ5_3_Delete_item_TOKENADMIN",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ADMIN_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URI}}/item/8",
+					"host": [
+						"{{BASE_URI}}"
+					],
+					"path": [
+						"item",
+						"8"
+					]
+				},
+				"description": "servicio para eliminar un producto del sistema, se requiere autenticacion como admin"
+			},
+			"response": []
+		},
+		{
+			"name": "1_Login_no_auth",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJBZG1pbiIsInBhc3N3b3JkIjoiMTIzIiwicm9sIjoxLCJpYXQiOjE1ODk5NDAwMzR9.zmcMH77Wmjyyw1W0RClN0fydisqdv38JJdSNBwfBrsc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"login\":\"admin\",\n\t\"password\":\"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URI}}/login",
+					"host": [
+						"{{BASE_URI}}"
+					],
+					"path": [
+						"login"
+					]
+				},
+				"description": "Servicio para identificarse en el sistema, retorna un token para su uso en los servicios"
+			},
+			"response": []
+		},
+		{
+			"name": "2_Lista_Usuarios_ADMINTOKEN",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ADMIN_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"login\":\"admin\",\n\t\"password\":\"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URI}}/usuario",
+					"host": [
+						"{{BASE_URI}}"
+					],
+					"path": [
+						"usuario"
+					]
+				},
+				"description": "Servicio para listar los usuarios del sistema, se requiere autenticacion como admin"
+			},
+			"response": []
+		},
+		{
+			"name": "3_Formas_de_pago_no_auth",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URI}}/formasDePago",
+					"host": [
+						"{{BASE_URI}}"
+					],
+					"path": [
+						"formasDePago"
+					]
+				},
+				"description": "Servicio para listar las formas de pago del sistema"
+			},
+			"response": []
+		},
+		{
+			"name": "4_Estado_pedido_no_auth",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"edicion\",\n    \"descripcion\": \"prueba\",\n    \"valor\": 20000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URI}}/estadoPedido",
+					"host": [
+						"{{BASE_URI}}"
+					],
+					"path": [
+						"estadoPedido"
+					]
+				},
+				"description": "Servicio para listar los estados del pedido en el sistema"
+			},
+			"response": []
+		},
+		{
+			"name": "5_Lista_roles_no_auth",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URI}}/rol",
+					"host": [
+						"{{BASE_URI}}"
+					],
+					"path": [
+						"rol"
+					]
+				},
+				"description": "Servicio para listar los roles del sistema"
+			},
+			"response": []
+		},
+		{
+			"name": "6_Lista_Pedidos_ADMINTOKEN",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ADMIN_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URI}}/pedido",
+					"host": [
+						"{{BASE_URI}}"
+					],
+					"path": [
+						"pedido"
+					]
+				},
+				"description": "Servicio para listar los pedidos en el sistema, se requiere autenticacion de admin o customer"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
