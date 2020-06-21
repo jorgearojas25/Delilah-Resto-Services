@@ -1,0 +1,877 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Delilah restaurant API</title>
+    <style type="text/css">
+      body {
+      	font-family: Trebuchet MS, sans-serif;
+      	font-size: 15px;
+      	color: #444;
+      	margin-right: 24px;
+      }
+      
+      h1	{
+      	font-size: 25px;
+      }
+      h2	{
+      	font-size: 20px;
+      }
+      h3	{
+      	font-size: 16px;
+      	font-weight: bold;
+      }
+      hr	{
+      	height: 1px;
+      	border: 0;
+      	color: #ddd;
+      	background-color: #ddd;
+      }
+      
+      .app-desc {
+        clear: both;
+        margin-left: 20px;
+      }
+      .param-name {
+        width: 100%;
+      }
+      .license-info {
+        margin-left: 20px;
+      }
+      
+      .license-url {
+        margin-left: 20px;
+      }
+      
+      .model {
+        margin: 0 0 0px 20px;
+      }
+      
+      .method {
+        margin-left: 20px;
+      }
+      
+      .method-notes	{
+      	margin: 10px 0 20px 0;
+      	font-size: 90%;
+      	color: #555;
+      }
+      
+      pre {
+        padding: 10px;
+        margin-bottom: 2px;
+      }
+      
+      .http-method {
+       text-transform: uppercase;
+      }
+      
+      pre.get {
+        background-color: #0f6ab4;
+      }
+      
+      pre.post {
+        background-color: #10a54a;
+      }
+      
+      pre.put {
+        background-color: #c5862b;
+      }
+      
+      pre.delete {
+        background-color: #a41e22;
+      }
+      
+      .huge	{
+      	color: #fff;
+      }
+      
+      pre.example {
+        background-color: #f3f3f3;
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+      
+      code {
+        white-space: pre;
+      }
+      
+      .nickname {
+        font-weight: bold;
+      }
+      
+      .method-path {
+        font-size: 1.5em;
+        background-color: #0f6ab4;
+      }
+      
+      .up {
+        float:right;
+      }
+      
+      .parameter {
+        width: 500px;
+      }
+      
+      .param {
+        width: 500px;
+        padding: 10px 0 0 20px;
+        font-weight: bold;
+      }
+      
+      .param-desc {
+        width: 700px;
+        padding: 0 0 0 20px;
+        color: #777;
+      }
+      
+      .param-type {
+        font-style: italic;
+      }
+      
+      .param-enum-header {
+      width: 700px;
+      padding: 0 0 0 60px;
+      color: #777;
+      font-weight: bold;
+      }
+      
+      .param-enum {
+      width: 700px;
+      padding: 0 0 0 80px;
+      color: #777;
+      font-style: italic;
+      }
+      
+      .field-label {
+        padding: 0;
+        margin: 0;
+        clear: both;
+      }
+      
+      .field-items	{
+      	padding: 0 0 15px 0;
+      	margin-bottom: 15px;
+      }
+      
+      .return-type {
+        clear: both;
+        padding-bottom: 10px;
+      }
+      
+      .param-header {
+        font-weight: bold;
+      }
+      
+      .method-tags {
+        text-align: right;
+      }
+      
+      .method-tag {
+        background: none repeat scroll 0% 0% #24A600;
+        border-radius: 3px;
+        padding: 2px 10px;
+        margin: 2px;
+        color: #FFF;
+        display: inline-block;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+  <h1>Delilah restaurant API</h1>
+    <div class="app-desc">Delilah restaurant API</div>
+    <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
+    <div class="app-desc">Contact Info: <a href="jorgearojas25@gmail.com">jorgearojas25@gmail.com</a></div>
+    <div class="app-desc">Version: 1.1.0</div>
+    
+    <div class="license-info">Apache 2.0</div>
+    <div class="license-url">http://www.apache.org/licenses/LICENSE-2.0.html</div>
+  <h2>Access</h2>
+    <ol>
+      <li></li>
+    </ol>
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#Admins">Admins</a></h4>
+  <ul>
+  <li><a href="#2ListaUsuariosADMINTOKEN"><code><span class="http-method">get</span> /usuario</code></a></li>
+  <li><a href="#6ListaPedidosADMINTOKEN"><code><span class="http-method">get</span> /pedido</code></a></li>
+  <li><a href="#objetoRespuesta"><code><span class="http-method">post</span> /pedido</code></a></li>
+  <li><a href="#rEQ2ListaProductosCUSTOMERTOKEN"><code><span class="http-method">get</span> /item</code></a></li>
+  <li><a href="#rEQ4UpadtePedidoADMINTOKEN"><code><span class="http-method">put</span> /pedido</code></a></li>
+  <li><a href="#rEQ51CreacionItemADMINTOKEN"><code><span class="http-method">post</span> /item</code></a></li>
+  <li><a href="#rEQ52UpdateItemADMINTOKEN"><code><span class="http-method">put</span> /item</code></a></li>
+  <li><a href="#rEQ53DeleteItemTOKENADMIN"><code><span class="http-method">delete</span> /item/{id_item}</code></a></li>
+  </ul>
+  <h4><a href="#Customers">Customers</a></h4>
+  <ul>
+  <li><a href="#6ListaPedidosADMINTOKEN"><code><span class="http-method">get</span> /pedido</code></a></li>
+  <li><a href="#objetoRespuesta"><code><span class="http-method">post</span> /pedido</code></a></li>
+  <li><a href="#rEQ2ListaProductosCUSTOMERTOKEN"><code><span class="http-method">get</span> /item</code></a></li>
+  </ul>
+  <h4><a href="#NoAuth">NoAuth</a></h4>
+  <ul>
+  <li><a href="#1LoginNoAuth"><code><span class="http-method">post</span> /login</code></a></li>
+  <li><a href="#3FormasDePagoNoAuth"><code><span class="http-method">get</span> /formasDePago</code></a></li>
+  <li><a href="#4EstadoPedidoNoAuth"><code><span class="http-method">get</span> /estadoPedido</code></a></li>
+  <li><a href="#5ListaRolesNoAuth"><code><span class="http-method">get</span> /rol</code></a></li>
+  <li><a href="#rEQ1RegistroUsuarioNoAuth"><code><span class="http-method">post</span> /usuario/signup</code></a></li>
+  </ul>
+
+  <h1><a name="Admins">Admins</a></h1>
+  <div class="method"><a name="2ListaUsuariosADMINTOKEN"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /usuario</code></pre></div>
+    <div class="method-summary">2_Lista_Usuarios_ADMINTOKEN (<span class="nickname">2ListaUsuariosADMINTOKEN</span>)</div>
+    <div class="method-notes">Servicio para listar los usuarios del sistema, se requiere autenticacion como admin</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="6ListaPedidosADMINTOKEN"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /pedido</code></pre></div>
+    <div class="method-summary">6_Lista_Pedidos_ADMINTOKEN (<span class="nickname">6ListaPedidosADMINTOKEN</span>)</div>
+    <div class="method-notes">Servicio para listar los pedidos en el sistema, se requiere autenticacion de admin o customer, si es admin se tienen todos los pedidos y si es customer se tienen los pedidos de ese customer</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="objetoRespuesta"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /pedido</code></pre></div>
+    <div class="method-summary">Objeto_Respuesta (<span class="nickname">objetoRespuesta</span>)</div>
+    <div class="method-notes">Creacion de pedidos, usa el id del usuario, la forma de pago y un listado de items del sistema, se necesita autenticacion como customer o admin</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#REQ3_Crear_pedido_CUSTOMERTOKEN_Request">REQ3_Crear_pedido_CUSTOMERTOKEN_Request</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+            <div class="param-desc"><span class="param-type">example: <code>{
+  &quot;id_usuario&quot; : 2,
+  &quot;id_formas_pago&quot; : 1,
+  &quot;items&quot; : [ {
+    &quot;id_item&quot; : 1,
+    &quot;cantidad&quot; : 2
+  }, {
+    &quot;id_item&quot; : 2,
+    &quot;cantidad&quot; : 1
+  } ]
+}</code></span></div>    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Objeto_Respuesta">Objeto_Respuesta</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "resultado" : true,
+  "entidades" : [ 1 ],
+  "mensajes" : [ ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json; charset=utf-8</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    
+        <a href="#Objeto_Respuesta">Objeto_Respuesta</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="rEQ2ListaProductosCUSTOMERTOKEN"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /item</code></pre></div>
+    <div class="method-summary">REQ2_lista_productos_CUSTOMERTOKEN (<span class="nickname">rEQ2ListaProductosCUSTOMERTOKEN</span>)</div>
+    <div class="method-notes">Servicio para listar los productos del sistema, se necesita autenticacion de un admin o un customer</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="rEQ4UpadtePedidoADMINTOKEN"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /pedido</code></pre></div>
+    <div class="method-summary">REQ4_Upadte_pedido_ADMINTOKEN (<span class="nickname">rEQ4UpadtePedidoADMINTOKEN</span>)</div>
+    <div class="method-notes">Servicio para editar el pedido, se requiere autenticacion como admin del sistema</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#REQ4_Upadte_pedido_ADMINTOKEN_Request">REQ4_Upadte_pedido_ADMINTOKEN_Request</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+            <div class="param-desc"><span class="param-type">example: <code>{
+  &quot;id_pedido&quot; : 1,
+  &quot;valor_total&quot; : 20000,
+  &quot;fecha_pedido&quot; : &quot;2020-05-26T20:31:58.000Z&quot;,
+  &quot;id_usuario&quot; : 2,
+  &quot;id_estado_pedido&quot; : 2,
+  &quot;id_formas_pago&quot; : 1
+}</code></span></div>    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="rEQ51CreacionItemADMINTOKEN"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /item</code></pre></div>
+    <div class="method-summary">REQ5_1_Creacion_item_ADMINTOKEN (<span class="nickname">rEQ51CreacionItemADMINTOKEN</span>)</div>
+    <div class="method-notes">Servicio para la creacion de items, se requiere autenticacion como admin del sistema</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#REQ5_1_Creacion_item_ADMINTOKEN_Request">REQ5_1_Creacion_item_ADMINTOKEN_Request</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+            <div class="param-desc"><span class="param-type">example: <code>{
+  &quot;nombre&quot; : &quot;Creacion&quot;,
+  &quot;descripcion&quot; : &quot;Prueba Creacion&quot;,
+  &quot;valor&quot; : 20000
+}</code></span></div>    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="rEQ52UpdateItemADMINTOKEN"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /item</code></pre></div>
+    <div class="method-summary">REQ5_2_Update_item_ADMINTOKEN (<span class="nickname">rEQ52UpdateItemADMINTOKEN</span>)</div>
+    <div class="method-notes">Edicion de un pedido solo por parte de los administradores del sistema</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#REQ5_2_Update_item_ADMINTOKEN_Request">REQ5_2_Update_item_ADMINTOKEN_Request</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+            <div class="param-desc"><span class="param-type">example: <code>{
+  &quot;id_item&quot; : 9,
+  &quot;nombre&quot; : &quot;Edicion&quot;,
+  &quot;descripcion&quot; : &quot;Prueba Edicion&quot;,
+  &quot;valor&quot; : 20000
+}</code></span></div>    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="rEQ53DeleteItemTOKENADMIN"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /item/{id_item}</code></pre></div>
+    <div class="method-summary">REQ5_3_Delete_item_TOKENADMIN (<span class="nickname">rEQ53DeleteItemTOKENADMIN</span>)</div>
+    <div class="method-notes">servicio para eliminar un producto del sistema, se requiere autenticacion como admin</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id_item (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; id de el pedido format: int32</div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Customers">Customers</a></h1>
+  <div class="method"><a name="6ListaPedidosADMINTOKEN"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /pedido</code></pre></div>
+    <div class="method-summary">6_Lista_Pedidos_ADMINTOKEN (<span class="nickname">6ListaPedidosADMINTOKEN</span>)</div>
+    <div class="method-notes">Servicio para listar los pedidos en el sistema, se requiere autenticacion de admin o customer, si es admin se tienen todos los pedidos y si es customer se tienen los pedidos de ese customer</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="objetoRespuesta"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /pedido</code></pre></div>
+    <div class="method-summary">Objeto_Respuesta (<span class="nickname">objetoRespuesta</span>)</div>
+    <div class="method-notes">Creacion de pedidos, usa el id del usuario, la forma de pago y un listado de items del sistema, se necesita autenticacion como customer o admin</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#REQ3_Crear_pedido_CUSTOMERTOKEN_Request">REQ3_Crear_pedido_CUSTOMERTOKEN_Request</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+            <div class="param-desc"><span class="param-type">example: <code>{
+  &quot;id_usuario&quot; : 2,
+  &quot;id_formas_pago&quot; : 1,
+  &quot;items&quot; : [ {
+    &quot;id_item&quot; : 1,
+    &quot;cantidad&quot; : 2
+  }, {
+    &quot;id_item&quot; : 2,
+    &quot;cantidad&quot; : 1
+  } ]
+}</code></span></div>    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Objeto_Respuesta">Objeto_Respuesta</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "resultado" : true,
+  "entidades" : [ 1 ],
+  "mensajes" : [ ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json; charset=utf-8</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    
+        <a href="#Objeto_Respuesta">Objeto_Respuesta</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="rEQ2ListaProductosCUSTOMERTOKEN"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /item</code></pre></div>
+    <div class="method-summary">REQ2_lista_productos_CUSTOMERTOKEN (<span class="nickname">rEQ2ListaProductosCUSTOMERTOKEN</span>)</div>
+    <div class="method-notes">Servicio para listar los productos del sistema, se necesita autenticacion de un admin o un customer</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="NoAuth">NoAuth</a></h1>
+  <div class="method"><a name="1LoginNoAuth"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /login</code></pre></div>
+    <div class="method-summary">1_Login_no_auth (<span class="nickname">1LoginNoAuth</span>)</div>
+    <div class="method-notes">Servicio para identificarse en el sistema, retorna un token para su uso en los servicios</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#1_Login_no_auth_Request">1_Login_no_auth_Request</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+            <div class="param-desc"><span class="param-type">example: <code>{
+  &quot;login&quot; : &quot;admin&quot;,
+  &quot;password&quot; : 123
+}</code></span></div>    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="3FormasDePagoNoAuth"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /formasDePago</code></pre></div>
+    <div class="method-summary">3_Formas_de_pago_no_auth (<span class="nickname">3FormasDePagoNoAuth</span>)</div>
+    <div class="method-notes">Servicio para listar las formas de pago del sistema</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="4EstadoPedidoNoAuth"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /estadoPedido</code></pre></div>
+    <div class="method-summary">4_Estado_pedido_no_auth (<span class="nickname">4EstadoPedidoNoAuth</span>)</div>
+    <div class="method-notes">Servicio para listar los estados del pedido en el sistema</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="5ListaRolesNoAuth"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /rol</code></pre></div>
+    <div class="method-summary">5_Lista_roles_no_auth (<span class="nickname">5ListaRolesNoAuth</span>)</div>
+    <div class="method-notes">Servicio para listar los roles del sistema</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="rEQ1RegistroUsuarioNoAuth"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /usuario/signup</code></pre></div>
+    <div class="method-summary">REQ1_Registro_usuario_no_auth (<span class="nickname">rEQ1RegistroUsuarioNoAuth</span>)</div>
+    <div class="method-notes">Servicio para el registro de usuario en el sistema y asignacion de roles</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#REQ1_Registro_usuario_no_auth_Request">REQ1_Registro_usuario_no_auth_Request</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+            <div class="param-desc"><span class="param-type">example: <code>{
+  &quot;login&quot; : &quot;creacion&quot;,
+  &quot;nombre&quot; : &quot;test&quot;,
+  &quot;apellido&quot; : &quot;prueba&quot;,
+  &quot;correo&quot; : &quot;prueba@correo.com&quot;,
+  &quot;telefono&quot; : 1234567890,
+  &quot;direccion&quot; : &quot;Av 34 #2-4&quot;,
+  &quot;password&quot; : 123,
+  &quot;fecha_registro&quot; : &quot;2020-05-06T00:00:00.000Z&quot;,
+  &quot;id_rol&quot; : 1
+}</code></span></div>    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#1_Login_no_auth_Request"><code>1_Login_no_auth_Request</code> - 1_Login_no_auth_Request</a></li>
+    <li><a href="#Item"><code>Item</code> - Item</a></li>
+    <li><a href="#Objeto_Respuesta"><code>Objeto_Respuesta</code> - Objeto_Respuesta</a></li>
+    <li><a href="#REQ1_Registro_usuario_no_auth_Request"><code>REQ1_Registro_usuario_no_auth_Request</code> - REQ1_Registro_usuario_no_auth_Request</a></li>
+    <li><a href="#REQ3_Crear_pedido_CUSTOMERTOKEN_Request"><code>REQ3_Crear_pedido_CUSTOMERTOKEN_Request</code> - REQ3_Crear_pedido_CUSTOMERTOKEN_Request</a></li>
+    <li><a href="#REQ4_Upadte_pedido_ADMINTOKEN_Request"><code>REQ4_Upadte_pedido_ADMINTOKEN_Request</code> - REQ4_Upadte_pedido_ADMINTOKEN_Request</a></li>
+    <li><a href="#REQ5_1_Creacion_item_ADMINTOKEN_Request"><code>REQ5_1_Creacion_item_ADMINTOKEN_Request</code> - REQ5_1_Creacion_item_ADMINTOKEN_Request</a></li>
+    <li><a href="#REQ5_2_Update_item_ADMINTOKEN_Request"><code>REQ5_2_Update_item_ADMINTOKEN_Request</code> - REQ5_2_Update_item_ADMINTOKEN_Request</a></li>
+  </ol>
+
+  <div class="model">
+    <h3><a name="1_Login_no_auth_Request"><code>1_Login_no_auth_Request</code> - 1_Login_no_auth_Request</a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">login </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">password </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Item"><code>Item</code> - Item</a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id_item </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">cantidad </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Objeto_Respuesta"><code>Objeto_Respuesta</code> - Objeto_Respuesta</a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">resultado </div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+<div class="param">entidades </div><div class="param-desc"><span class="param-type"><a href="#object">array[Object]</a></span> Contienen el resultado de la operacion en un array de elementos del tipo </div>
+<div class="param">mensajes </div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> En caso de fallo contiene los mensajes de error para mostrar al usuario </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="REQ1_Registro_usuario_no_auth_Request"><code>REQ1_Registro_usuario_no_auth_Request</code> - REQ1_Registro_usuario_no_auth_Request</a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">login </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">nombre </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">apellido </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">correo </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">telefono </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">direccion </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">password </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">fecha_registro </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">id_rol </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="REQ3_Crear_pedido_CUSTOMERTOKEN_Request"><code>REQ3_Crear_pedido_CUSTOMERTOKEN_Request</code> - REQ3_Crear_pedido_CUSTOMERTOKEN_Request</a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id_usuario </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">id_formas_pago </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">items </div><div class="param-desc"><span class="param-type"><a href="#Item">array[Item]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="REQ4_Upadte_pedido_ADMINTOKEN_Request"><code>REQ4_Upadte_pedido_ADMINTOKEN_Request</code> - REQ4_Upadte_pedido_ADMINTOKEN_Request</a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id_pedido </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">valor_total </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">fecha_pedido </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">id_usuario </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">id_estado_pedido </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">id_formas_pago </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="REQ5_1_Creacion_item_ADMINTOKEN_Request"><code>REQ5_1_Creacion_item_ADMINTOKEN_Request</code> - REQ5_1_Creacion_item_ADMINTOKEN_Request</a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">nombre </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">descripcion </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">valor </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="REQ5_2_Update_item_ADMINTOKEN_Request"><code>REQ5_2_Update_item_ADMINTOKEN_Request</code> - REQ5_2_Update_item_ADMINTOKEN_Request</a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id_item </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">imagen </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">nombre </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">descripcion </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">valor </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+    </div>  <!-- field-items -->
+  </div>
+  </body>
+</html>

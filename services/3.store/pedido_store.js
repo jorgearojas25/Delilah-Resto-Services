@@ -6,6 +6,10 @@ const GetListaPedidos = async () => {
   return await model(dbClient).findAll();
 };
 
+const GetListaPedidosByUser = async (idUser) => {
+  return await model(dbClient).findAll({where: {id_usuario: idUser}})
+}
+
 const PostPedidos = async (dataUser) => {
   const pedido = model(dbClient).build(dataUser);
   return pedido.save();
@@ -18,5 +22,6 @@ const UpdatePedido = async (pedido) => {
 module.exports = {
   list: GetListaPedidos,
   insert: PostPedidos,
-  update: UpdatePedido
+  update: UpdatePedido,
+  userList: GetListaPedidosByUser
 };

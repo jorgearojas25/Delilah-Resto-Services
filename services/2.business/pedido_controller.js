@@ -2,9 +2,15 @@ const pedidoStore = require("../3.store/pedido_store");
 const itemStore = require("../3.store/item_store");
 const facturaStore = require("../3.store/factura_store");
 const objPedido = require("./BusinessObjects/PedidoBO");
-const GetListaPedidos = () => {
+const GetListaPedidos = (req, res) => {
   return new Promise((resolve, reject) => {
-    resolve(pedidoStore.list());
+    console.log(req);
+    if(req.user.id_rol == 1){
+      resolve(pedidoStore.list());
+    }else{
+      resolve(pedidoStore.userList(req.user.id_usuario))
+    }
+    
   });
 };
 

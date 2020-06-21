@@ -6,7 +6,7 @@ const auth = require("../../lib/auth");
 
 router.get("/", (req, res) => {
   controller
-    .GetListaPedidos()
+    .GetListaPedidos(req, res)
     .then((data) => {
       response.success(req, res, data, 200);
     })

@@ -17,9 +17,10 @@ app.use((req, res, next) => {
 });
 app.use(auth.authenticate);
 
+app.use(`/`, express.static('public'));
 
 router(app);
 
 server.listen(config.port, () => {
-    console.log(`la app esta funcionando en ${config.host}:${config.port}`);
+    console.log(`la app esta funcionando en ${config.host}:${config.port}/${config.version}`);
   });
