@@ -1,0 +1,15 @@
+{
+    "dbOptions": {
+      "database": "delilah",
+      "username": "root",
+      "password": "D3s4rr0ll0",
+      "dialect": "mysql",
+      "host": "localhost",
+      "port": 3306,
+      "logging": false
+    },
+    "options": {
+      "type": "js",
+      "dir": "/services/models"
+    }
+  }
