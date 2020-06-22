@@ -31,8 +31,8 @@ router.post("/signup", (req, res) => {
       response.error(
         req,
         res,
-        "Error interno",
-        500,
+        error,
+        409,
         `[usuario_network] ${error}`
       );
     });

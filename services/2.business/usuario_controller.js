@@ -7,7 +7,11 @@ const GetListaUsuarios = () => {
 }
 
 const PostUsuario = (req, res) => {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
+        let valid = await usuarioStore.login(req.body);
+        if(valid != null) {
+            reject('Este login ya esta en uso intenta usar otro');    
+        }
         resolve(usuarioStore.insert(req.body))
     });
 }
