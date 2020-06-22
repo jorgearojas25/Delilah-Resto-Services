@@ -11,7 +11,13 @@ router.get("/", (req, res) => {
       response.success(req, res, data, 200);
     })
     .catch((error) => {
-      response.error(req, res, "Error interno", 500, `[pedido_network] ${error}`);
+      response.error(
+        req,
+        res,
+        "Error interno",
+        500,
+        `[pedido_network] ${error}`
+      );
     });
 });
 
@@ -22,20 +28,48 @@ router.post("/", (req, res) => {
       response.success(req, res, data, 200);
     })
     .catch((error) => {
-      response.error(req, res, "Error interno", 500, `[pedido_network] ${error}`);
+      response.error(
+        req,
+        res,
+        "Error interno",
+        500,
+        `[pedido_network] ${error}`
+      );
     });
 });
 
-router.put("/",auth.authorize, (req, res) => {
+router.put("/", auth.authorize, (req, res) => {
   controller
     .UpdatePedido(req, res)
     .then((data) => {
       response.success(req, res, data, 200);
     })
     .catch((error) => {
-      response.error(req, res, "Error interno", 500, `[pedido_network] ${error}`);
+      response.error(
+        req,
+        res,
+        "Error interno",
+        500,
+        `[pedido_network] ${error}`
+      );
     });
 });
 
+router.delete("/:id", auth.authorize, (req, res) => {
+  controller
+    .DeletePedido(req, res)
+    .then((data) => {
+      response.success(req, res, data, 200);
+    })
+    .catch((error) => {
+      response.error(
+        req,
+        res,
+        "Error interno",
+        500,
+        `[pedido_network] ${error}`
+      );
+    });
+});
 
 module.exports = router;

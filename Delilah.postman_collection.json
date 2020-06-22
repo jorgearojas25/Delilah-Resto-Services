@@ -193,6 +193,35 @@
 			"response": []
 		},
 		{
+			"name": "REQ4_1_delete_pedido_ADMINTOKEN",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ADMIN_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URI}}/pedido/1",
+					"host": [
+						"{{BASE_URI}}"
+					],
+					"path": [
+						"pedido",
+						"1"
+					]
+				},
+				"description": "Servicio para eliminar un pedido y su factura correspondiente"
+			},
+			"response": []
+		},
+		{
 			"name": "REQ5_1_Creacion_item_ADMINTOKEN",
 			"request": {
 				"auth": {

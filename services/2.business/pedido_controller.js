@@ -2,6 +2,7 @@ const pedidoStore = require("../3.store/pedido_store");
 const itemStore = require("../3.store/item_store");
 const facturaStore = require("../3.store/factura_store");
 const objPedido = require("./BusinessObjects/PedidoBO");
+const factura_store = require("../3.store/factura_store");
 const GetListaPedidos = (req, res) => {
   return new Promise((resolve, reject) => {
     console.log(req);
@@ -24,6 +25,7 @@ const PostPedido = (req, res) => {
       req.body.id_formas_pago
     );
     const pedido = await pedidoStore.insert(cuerpoPedido);
+    console.log(`EL PEDIDO ${JSON.stringify(pedido)}`)
     let valorPedido = await GuardarFactura(req.body.items, pedido);
     cuerpoPedido.valor_total = valorPedido;
     cuerpoPedido.id_pedido = pedido.id_pedido;
@@ -54,8 +56,16 @@ const UpdatePedido = (req, res) => {
   });
 };
 
+const DeletePedido = ((req, res) => {
+  return new Promise(async(resolve, reject) => {
+    factura_store.deletePedido(req.params.id);
+    resolve(pedidoStore.delete(req.params.id));
+  })
+});
+
 module.exports = {
   GetListaPedidos,
   PostPedido,
   UpdatePedido,
+  DeletePedido
 };
