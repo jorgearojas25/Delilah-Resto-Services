@@ -19,9 +19,14 @@ const UpdatePedido = async (pedido) => {
   return await model(dbClient).update(pedido, {where: {id_pedido : pedido.id_pedido}});
 }
 
+const DeletePedido = async (id) => {
+  return await model(dbClient).destroy({where: {id_pedido : id}});
+}
+
 module.exports = {
   list: GetListaPedidos,
   insert: PostPedidos,
   update: UpdatePedido,
-  userList: GetListaPedidosByUser
+  userList: GetListaPedidosByUser,
+  delete: DeletePedido
 };

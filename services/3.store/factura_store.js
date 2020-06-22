@@ -15,8 +15,13 @@ const GetItemById = async (id) => {
     return await model(dbClient).findByPk(id);
 }
 
+const DeleteFacturaPedido = async (idPedido) =>{
+  return await model(dbClient).destroy({where: {id_pedidos: idPedido}})
+}
+
 module.exports = {
   list: GetListaFactura,
   insert: PostFactura,
-  getOne: GetItemById
+  getOne: GetItemById,
+  deletePedido: DeleteFacturaPedido
 };
