@@ -202,6 +202,7 @@
   <li><a href="#6ListaPedidosADMINTOKEN"><code><span class="http-method">get</span> /pedido</code></a></li>
   <li><a href="#objetoRespuesta"><code><span class="http-method">post</span> /pedido</code></a></li>
   <li><a href="#rEQ2ListaProductosCUSTOMERTOKEN"><code><span class="http-method">get</span> /item</code></a></li>
+  <li><a href="#rEQ41DeletePedidoADMINTOKEN"><code><span class="http-method">delete</span> /pedido/{id_pedido}</code></a></li>
   <li><a href="#rEQ4UpadtePedidoADMINTOKEN"><code><span class="http-method">put</span> /pedido</code></a></li>
   <li><a href="#rEQ51CreacionItemADMINTOKEN"><code><span class="http-method">post</span> /item</code></a></li>
   <li><a href="#rEQ52UpdateItemADMINTOKEN"><code><span class="http-method">put</span> /item</code></a></li>
@@ -341,6 +342,35 @@
     <div class="method-summary">REQ2_lista_productos_CUSTOMERTOKEN (<span class="nickname">rEQ2ListaProductosCUSTOMERTOKEN</span>)</div>
     <div class="method-notes">Servicio para listar los productos del sistema, se necesita autenticacion de un admin o un customer</div>
 
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="rEQ41DeletePedidoADMINTOKEN"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /pedido/{id_pedido}</code></pre></div>
+    <div class="method-summary">REQ4_1_delete_pedido_ADMINTOKEN (<span class="nickname">rEQ41DeletePedidoADMINTOKEN</span>)</div>
+    <div class="method-notes">Servicio para eliminar un pedido y su factura correspondiente</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id_pedido (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; id de el pedido format: int32</div>    </div>  <!-- field-items -->
 
 
 

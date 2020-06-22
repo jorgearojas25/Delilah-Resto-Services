@@ -217,6 +217,27 @@ paths:
           description: ''
           headers: {}
       deprecated: false
+  /pedido/{id_pedido}:
+    delete:
+      tags:
+      - Admins
+      summary: REQ4_1_delete_pedido_ADMINTOKEN
+      description: Servicio para eliminar un pedido y su factura correspondiente
+      operationId: REQ4_1_delete_pedido_ADMINTOKEN
+      parameters:
+        - name: id_pedido
+          in: path
+          required: true
+          description: id de el pedido
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
   /item/{id_item}:
     delete:
       tags:
@@ -531,4 +552,3 @@ components:
       bearerFormat: JWT
 security:
   - bearerAuth: []
-  
